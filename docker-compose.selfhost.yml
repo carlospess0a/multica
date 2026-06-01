@@ -94,6 +94,12 @@ services:
     environment:
       HOSTNAME: "0.0.0.0"
       PORT: "3000"
+      # Backend URL for Next.js API rewrites (proxies /api/* → backend)
+      NEXT_PUBLIC_API_URL: http://backend:8085
+      # App URL used for OAuth redirects, emails, etc.
+      NEXT_PUBLIC_APP_URL: ${NEXT_PUBLIC_APP_URL:-https://multica.karinscripts.com}
+      # Build-time version shown in UI
+      NEXT_PUBLIC_APP_VERSION: ${MULTICA_IMAGE_TAG:-latest}
 
     restart: unless-stopped
 
