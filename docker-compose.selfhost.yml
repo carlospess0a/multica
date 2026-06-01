@@ -94,7 +94,9 @@ services:
     environment:
       HOSTNAME: "0.0.0.0"
       PORT: "3000"
-      # Backend URL for Next.js API rewrites (proxies /api/* → backend)
+      # Backend URL for Next.js API rewrites — REMOTE_API_URL é avaliado no build time,
+      # NEXT_PUBLIC_API_URL é lido pelo CoreProvider no browser
+      REMOTE_API_URL: http://backend:8085
       NEXT_PUBLIC_API_URL: http://backend:8085
       # App URL used for OAuth redirects, emails, etc.
       NEXT_PUBLIC_APP_URL: ${NEXT_PUBLIC_APP_URL:-https://multica.karinscripts.com}
